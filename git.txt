@@ -80,7 +80,8 @@ Para agregar archivos al Staging Area:
 git add <nombre_archivo> (forma explícita)
 git add * (todos los archivos y carpetas)
 
-
+Para entregar los cambios:
+git commit -m "Mensaje Descriptivo"
 
 
 
