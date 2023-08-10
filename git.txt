@@ -1,0 +1,101 @@
+Introducción a GIT
+
+Git es software de control de versiones. Nos sirve para gestionar el versionado de nuestros
+archivos y para el desarrollo colaborativo.
+
+GIT -> Global Information Tracker (Seguidor Global de Información)
+
+
+REPOSITORIO
+-----------
+
+Espacio virtual donde se almacenan los archivos del proyecto
+
+Cuando integramos un proyecto al Git, se crea una carpeta oculta llamada .git/
+
+- objects/: objetos que se almacenan y representan cada archivo y su contenido en el repo
+- refs/: referencias a los commits, ramas y etiquetas
+- hooks/: scripts personalizados que se pueden ejecutar en determinados eventos
+- logs/: registros de acciones y eventos relacionados con el repo
+
+- HEAD: referencia a la rama en la que nos encontramos actualmente
+- config: configuracion específica del repo
+- index: mantiene un registro de los cambios que se incluirán en el próximo commit
+
+
+Estados del repositorio:
+-----------------------
+
+- Committed: Donde los datos se almacenan de forma segura en la base de datos
+
+- Modified: Indica que un archivo fue modificado, pero no fue enviado a la base
+
+- Staged: Indica que se marcó un archivo modificado en su versión actual para pasar al próximo commit
+
+
+Configuración de GIT
+--------------------
+
+- /etc/gitconfig: incluye valores que aplican a todos los usuarios del SO y todos los repo
+
+- .gitconfig: incluye valores específicos del usuario que esté usando la máquina.
+
+- .git/config: Archivo de configuración propio de un proyecto.
+
+1er paso: Configurar nombre de usuario:
+
+git config --global user.name "AndresG"
+
+2do paso: Configurar dirección de email:
+
+git config --global user.email "andres.giuffre@educacionit.com"
+
+Para ver listado de configuraciones y ubicación de los archivos:
+
+git config --list --show-origin
+
+Para configurar un editor de texto:
+
+git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe'"
+
+a mano editando el .gitconfig:
+[core]
+    editor = \"C:\\Users\\AndresGiuffre\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+
+Verificar las configuraciones:
+
+git config --list (Devuelve listado de configuraciones)
+git config user.name (Devuelve el valor de user.name)
+
+
+Inicialización de un directorio:
+-------------------------------
+
+El comando de inicialización es:
+git init (inicializa el repositorio)
+
+git status (nos muestra el estado actual de nuestros archivos)
+
+Para agregar archivos al Staging Area:
+git add <nombre_archivo> (forma explícita)
+git add * (todos los archivos y carpetas)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
