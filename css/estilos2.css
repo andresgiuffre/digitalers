@@ -1,0 +1,52 @@
+body {
+    background-color: bisque;
+}
+
+main {
+    display: flex;
+    font-size: 50px;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    border: 2px solid black;
+    height: 300px;
+}
+
+#uno {
+    background-color: #798be4;
+}
+
+#dos {
+    background-color: #a2abda;
+}
+
+#tres {
+    background-color: #e1e2eb;
+}
+
+table {
+    background-color: azure;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+caption {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    color: chocolate;
+    margin: 40px 100px;
+}
+
+th {
+    padding: 5px;
+    border-width: 3px;
+    background-color: darkorange;
+    width: 120px;
+    height: 50px;
+}
+
+tr {
+    background-color: burlywood;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Prueba</title>
+</head>
+<body style="background-color: bisque;">
+    <form action="php/codigo.php" method="post">
+        
+        <label>Nombre:
+            <input type="text" name="nombre" style="width: 200px;">
+        </label><br><br>
+
+        <label>Email:
+            <input type="email" name="email" style="width: 200px;">
+        </label><br><br>
+
+        <label>Comentarios:<br>
+            <textarea name="consulta" style="width: 200px; height: 60px;"></textarea>
+        </label><br><br>
+
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+    </form>
+</body>
+</html>

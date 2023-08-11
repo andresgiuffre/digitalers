@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+body {
+    background-color: blanchedalmond;
+}
+
+h1 {
+    color: rgb(203, 151, 10);
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Selectores descendentes */
+h1 strong {
+    color: red;
+}
+
+/* Selectores grupales */
+h4 {
+    color:rgb(56, 192, 192)
+}
+
+/* Cambio de tamaño de fuente */
+p {
+    margin: 30px auto;
+    font-style: oblique;
+    padding: 30px 25px;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+a {
+    color:cornflowerblue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color:blue;
+}
+
+ul {
+    list-style-type: none;
+}
+
+label, input {
+    display: block;
+    margin-top: 10px;
+}
+
+#enunciadoH2 {
+    color: chocolate;
+}
+
+.enunciadoH3 {
+    color: chartreuse;
+}

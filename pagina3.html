@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Formulario</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <form action="codigo.php" method="post">
+        <label>Ingrese su nombre:
+        <input type="text" name="nombre" placeholder="Nombre"></label>
+        
+        <label>Ingrese su edad:
+        <input type="number" name="edad" min="1" max="100" placeholder="20"></label>
+        
+        <label>Seleccione su club de fútbol:<br>
+        <input type="checkbox" name="boca" checked style="display: inline-block;">Boca Juniors<br>
+        <input type="checkbox" name="river" style="display: inline-block;">River Plate<br>
+        <input type="checkbox" name="cuervo" style="display: inline-block;">San Lorenzo<br>
+        </label>
+
+        <label>
+            Indique su género:<br>
+            <input type="radio" name="genero" value="hombre" style="display: inline-block;">Hombre<br>
+            <input type="radio" name="genero" value="mujer" checked style="display: inline-block;">Mujer<br>
+        </label>
+
+        <input type="file" accept=".jpg, .png" required>
+
+        <select>
+            <option value="opcion1">Opción 1</option>
+            <option value="opcion2">Opción 2</option>
+            <optgroup label="Grupo 1">
+                <option value="opcion3">Opción 3</option>
+                <option value="opcion4">Opción 4</option>
+            </optgroup>
+        </select><br><br>
+
+        <textarea name="area" rows="5" cols="50" placeholder="Ingrese su texto" maxlength="1024"></textarea><br><br>
+
+        <fieldset>
+            <legend>Datos Importantes</legend>
+            Nombre: <input type="text" name="nombre">
+            DNI: <input type="number" name="dni">
+            Estado Civil: <input type="radio" name="ecivil" value="soltero">soltero
+            <input type="radio" name="ecivil" value="casado">casado
+        </fieldset>
+
+        <input type="submit" value="Enviar Datos" style="display: inline-block;">
+        <input type="reset" value="Resetear Campos" style="display: inline-block;">
+    </form>
+</body>
+</html>

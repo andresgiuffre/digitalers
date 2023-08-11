@@ -1,0 +1,199 @@
+<!--
+    Enlaces
+
+    Etiqueta <a> de Anchor (ancla)
+
+    URL = Uniform Resource Locator
+
+    Se compone de:
+
+    - Un ESQUEMA: http:// (HyperText Transfer Protocol)
+                  https:// Sitios Web Seguros
+                  ftp:// (File Transfer Protocol)
+                  mailto: 
+                <a href="mailto: direcciondeprueba@gmail.com, otradir@gmail.com?subject=Titulo de Prueba">Enviar un mail</a>
+
+    - DOMINIO: Ej: dominio.com
+
+    - RUTA: www.dominio.com/carpeta/recurso.html
+
+    - PARAMETROS: www.dominio.com/buscar?palabra=ejemplo
+                    Key=Value
+
+    ATRIBUTOS
+    --------
+
+    - href: Indica la URL donde nos dirigiremos
+
+    - target: - _blank: Abrir el vinculo en una nueva pestaña
+                _self: Abre el vinculo en la misma pestaña
+                _parent: Abre el enlace en un marco superior
+                _top: Abre el enlace en la ventana principal
+
+    - rel: - nofollow: Dice a los motores de búsqueda que NO
+                       sigan a este enlace.
+           - noopener: Elimina la relacion entre pagina de origen
+                       y pagina de destino
+           - noreferrer: Elimina la referencia de la página origen
+                        en el enlace.
+
+    - title: Proporciona un texto descriptivo emergente en el link
+--------------------------------
+
+selector:pseudo-clase {
+    propiedad: valor;
+}
+
+a:hover - Cuando pasamos el mouse por encima del enlace
+a:link - cuando todavía no visitamos el vínculo
+a:visited - cuando ya visitamos ese vínculo
+a:active - cuando le hacemos click al vínculo
+
+ALINEACION DE TEXTO
+-------------------
+
+text-align:     - left
+                - center
+                - right
+                - justify
+
+TRANSFORMACION
+--------------
+
+text-transform:     - uppercase
+                    - lowercase
+                    - capitalize
+                    - none
+
+text-decoration:    - underline
+                    - overline
+                    - line-through
+                    - none
+
+DISPLAY
+-------
+
+block: Se comportan como bloques independientes (h1, h2, etc, <p>, <li>)
+
+inline: Se ajustan al flujo de texto y no provocan salto de línea (span)
+        No permiten ajustar ancho y alto.
+
+inline-block: Se comportan como elementos en línea, pero permiten ajustar
+              ancho y alto. 
+
+none: No se muestran en absoluto. 
+
+flex: Permite un diseño flexible  y adaptable.
+
+Para encolumnar de  manera horizontal usamos justify-content
+
+    - flex-start: Valor por defecto
+    - center: Centrar elementos
+    - flex-end: Ubica en el final del contenedor
+    - space-around: Genera espacios alrededor de cada elemento
+    - space-between: Genera espacios entre los elementos
+    - space-evenly: Genera espacio alrededor de forma proporcional
+
+Para ubicarlos de forma vertical voy a usar align-items
+
+    - stretch: Valor por defecto
+    - flex-start: Ubica en la parte superior
+    - flex-end: Ubica en la parte inferior
+    - center: Ubica en el centro del contenedor
+
+grid: Coloca los elementos en un contenedor de cuadrícula y permite
+    una disposicion y alineación más compleja y estructurada.
+
+
+PROPIEDAD WIDTH (Ancho)
+-----------------------
+
+Especifica el ancho en los documentos donde la utilicemos. Funciona
+en elementos con display block o inline-block.
+
+vh (Viewport Height) representa una fracción del alto total del 
+viewport (Ventana del Navegador). 1vh equivale a un 1% del alto del 
+viewport.
+
+vw (Viewport Width) representa una francción del ancho total del 
+viewport. 1vw equivale a un 1% del ancho total del viewport.
+
+400px, 500px ... 50%, 80%
+
+PROPIEDAD HEIGHT (Altura)
+-------------------------
+
+Especifica la altura en donde la utilicemos.
+
+PROPIEDAD MARGIN (Margen)
+-------------------------
+
+Afecta el espacio que hay entre 2 contenedores contiguos
+
+- margin-top: 12px;
+- margin-left: px;
+- margin-right: px;
+- margin-bottom: px;
+
+- margin: 30px 25px 30px 25px; (top, right, bottom, left)
+- margin: 30px; (Aplica 30px a los 4 lados)
+- margin: 30px 25px; (top y bottom, left y right)
+- margin: 30px auto; (top y bottom)
+
+PROPIEDAD PADDING
+-----------------
+
+Afecta los bordes del contenedor y su contenido
+
+- padding-top: 12px;
+- padding-left: px;
+- padding-right: px;
+- padding-bottom: px;
+
+- padding: 30px 25px 30px 25px; (top, right, bottom, left)
+- padding: 30px; (Aplica 30px a los 4 lados)
+- padding: 30px 25px; (top y bottom, left y right)
+- padding: 30px auto; (top y bottom)
+
+PROPIEDAD BOX-SIZING
+--------------------
+
+Permite o no permite que el padding se sume al ancho o al 
+alto total de un elemento.
+
+- content-box (defecto)
+- border-box (Calcula el tamaño total incluyendo el contenido,
+el padding, el borde, etc)
+
+PROPIEDAD FONT-WEIGHT
+---------------------
+
+- normal: equivale a 400
+- bold: equivale a 700
+- lighter: la fuente será más liviana que el valor que tenía
+previamente especificado
+- bolder: la fuente será más negrita que el valor previo.
+
+- 200, 500, 800
+
+PROPIEDAD FONT-STYLE
+--------------------
+
+Asigna italic o normal 
+
+
+IFRAME
+------
+
+Propiedad allow:
+
+    - autoplay: Para reproduccion automática
+    - camera: Acceso a la web cam
+    - fullscreen: Para pantalla completa
+    - geolocation: Acceso a la ubicacion geografica
+    - microphone: Acceso al micrófono
+    - accelerometer: Acceso a los datos de acelerómetro
+    - speaker: Acceso a los parlantes
+    - gyroscope: Acceso al giroscopio
+
+-->
