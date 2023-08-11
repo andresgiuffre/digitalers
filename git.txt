@@ -86,3 +86,12 @@ git commit -m "Mensaje Descriptivo"
 Para hacer el paso al Staging Area y entregar los cambios a la vez:
 git commit -a -m "Mensaje Descriptivo"
 
+Para modificar el mensaje del último commit:
+git commit --amend (Edita el archivo COMMIT_EDITMSG ubicado en .git/)
+
+logs
+----
+
+git log (para ver todos los commits)
+git log --oneline (muestra info abreviada)
+git log --graph (muestra un gráfico ASCII de las ramificaciones)
