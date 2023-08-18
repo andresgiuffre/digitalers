@@ -95,3 +95,20 @@ logs
 git log (para ver todos los commits)
 git log --oneline (muestra info abreviada)
 git log --graph (muestra un gráfico ASCII de las ramificaciones)
+
+
+GitHub
+------
+
+Creamos repositorio con el botón "New"
+
+Para sincronizar desde un terminal
+
+1) Inicializar repo (git init)
+2) git remote add <alias> <url_del_repo> (como alias se suele utilizar origin)
+3) git pull <alias> <branch> (ej: git pull origin main)
+
+Si realizo cambios sobre un archivo:
+
+1) git add <archivo> o git commit -a -m "Mensaje descriptivo"
+2) git push <alias> <branch>

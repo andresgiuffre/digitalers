@@ -1,0 +1,56 @@
+Clonación de repositorio
+------------------------
+
+git clone <url>
+
+Para saber que ramas existen dentro de un proyecto:
+
+git branch -r
+
+---------------------------
+Fork: Una copia de un proyecto a la cual no se tiene acceso de escritura. Se copia el proyecto en el
+perfil del usuario.
+
+Pull Request: Es una solicitud para que los cambios que se envían desde un repo de colaboración
+se integren con el proyecto original
+
+1) Fork del proyecto para trabajar de forma local
+2) Crean una branch
+3) Realizar cambios
+4) Hace un commit y un push
+5) Crea un Pull Request
+6) Revisión y discusión
+7) Aprobación y fusión
+8) Cierre del Pull Request
+
+--------------------------------------
+Fetch
+
+En caso que otros desarrolladores estén realizando cambios en el repositorio remoto en 
+el que yo estoy trabajando, para traerme esos cambios:
+
+git fetch <alias> (origin)
+
+Fetch nos trae los cambios que están en el repositorio remoto y no tenemos en nuestro repo local
+SIN afectar nuestro trabajo actual. Se mantiene en ramas separadas. Luego habrá que unir las
+ramas con algún método de fusión.
+
+---------------------------------------
+Pull
+
+git pull
+git pull <alias> <rama>
+
+Actua sobre la rama que estamos trabajando si existe en el servidor remoto. Nos trae los cambios
+que no tengamos en el repo local y los integra automáticamente.
+---------------------------------------
+branch
+-----
+
+git branch <nombre_de_la_rama>
+
+Para cambiar de rama
+
+git checkout <rama>
+git switch <rama>
+
