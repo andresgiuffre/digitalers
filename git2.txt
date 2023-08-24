@@ -23,7 +23,7 @@ se integren con el proyecto original
 7) Aprobación y fusión
 8) Cierre del Pull Request
 
---------------------------------------
+--------------------------------------------
 Fetch
 
 En caso que otros desarrolladores estén realizando cambios en el repositorio remoto en 

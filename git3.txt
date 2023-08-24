@@ -50,7 +50,6 @@ Cherry-pick
 Con este comando puedo llevar a la rama donde esté trabajando, un commit antiguo de otra rama.
 ---------------------------------------------------
 
-
 Stash
 -----
 
