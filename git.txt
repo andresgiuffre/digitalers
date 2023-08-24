@@ -1,5 +1,6 @@
-Introducción a GIT
-------------------
+----------------------
+| Introducción a GIT |
+----------------------
 
 Git es software de control de versiones. Nos sirve para gestionar el versionado de nuestros
 archivos y para el desarrollo colaborativo.
