@@ -7,7 +7,9 @@ de la rama destino + los que tenía en la rama origen.
 
 > git rebase <branch>
 
-Ejemplo: Me posiciono en la rama desarrollo y lanzo el comando "git rebase master"
+Ejemplo: Me posiciono en la rama que le faltan los cambios y lanzo el comando.
+Desarrollo tiene cambios que queremos rebasar en Master. Me posiciono en Master y lanzo
+git rebase desarrollo
 
 Pasos del comando Rebase
 ------------------------
