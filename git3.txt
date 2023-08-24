@@ -53,4 +53,35 @@ Con este comando puedo llevar a la rama donde esté trabajando, un commit antigu
 Stash
 -----
 
+Este comando nos sirve para cambiar de rama sin necesidad de hacer un commit. Guarda los cambios en
+una pila temporal mediante el comando
+
+> git stash
+
+Una vez hecho el stash ya podemos cambiar de rama.
+Para recuperar el ultimo stash
+
+> git stash apply
+
+Para ver que tenemos el stash
+
+> git stash list
+
+Para recuperar stash mas antiguos
+
+> git stash apply --index #indice
+-------------------------------------------------------------------
+
+Bisect
+------
+
+Bisect nos ayuda a automatizar el proceso de búsqueda de bugs o problemas funcionales en caso
+de venir arrastrando errores de antiguos commits sin habernos dado cuenta.
+
+1) Iniciar el modo Bisect
+> git bisect start
+
+2) Definir 1 commit bueno y 1 commit malo
+> git bisect good <hash>
+> git bisect bad <hash>
 
