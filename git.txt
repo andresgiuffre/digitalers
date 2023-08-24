@@ -8,8 +8,8 @@ archivos y para el desarrollo colaborativo.
 GIT -> Global Information Tracker (Seguidor Global de Información)
 
 
---> REPOSITORIO <---
-    -----------
+REPOSITORIO
+-----------
 
 Espacio virtual donde se almacenan los archivos del proyecto
 
