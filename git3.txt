@@ -36,4 +36,22 @@ Beneficios de usar Rebase
 
 - Podemos mantener una historia de commits lineal y menos fragmentada
 - Nos da una historia de commits mas limpia
+--------------------------------------------------------------
+
+Cherry-pick
+-----------
+
+1) Necesitamos el HASH del commit (git log --oneline)
+2) Posicionamos en la rama donde queremos aplicar el cambios
+3) Lanzar el comando
+
+> git cherry-pick <hash>
+
+Con este comando puedo llevar a la rama donde esté trabajando, un commit antiguo de otra rama.
+---------------------------------------------------
+
+
+Stash
+-----
+
 
