@@ -14,7 +14,7 @@ perfil del usuario.
 Pull Request: Es una solicitud para que los cambios que se envían desde un repo de colaboración
 se integren con el proyecto original
 
-1) Fork del proyecto para trabajar de forma local --->
+1) Fork del proyecto para trabajar de forma local <---
 2) Crean una branch
 3) Realizar cambios
 4) Hace un commit y un push
