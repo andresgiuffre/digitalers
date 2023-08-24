@@ -1,0 +1,37 @@
+Rebase
+------
+
+Reorganiza y aplica los cambios de una rama sobre otra rama. No hace fusión de ramas, sino que inserta
+los commits de una rama en la parte superior de la otra, generando un nuevo commit con todo el historial
+de la rama destino + los que tenía en la rama origen.
+
+> git rebase <branch>
+
+Ejemplo: Me posiciono en la rama desarrollo y lanzo el comando "git rebase master"
+
+Pasos del comando Rebase
+------------------------
+
+1) Determina que commits necesitan ser reorganizados
+2) Guarda puntos de referencia (refs) en una carpeta temporal
+3) Aplica commits de la rama de origen a la rama de destino
+4) Resolucion de conflictos
+5) Creación de los nuevos commits
+6) Avanza la referencia de la rama destino al último commit
+7) Elimina los puntos de referencia temporales (refs)
+8) Finaliza el proceso de Rebase.
+
+Beneficios de usar Merge
+------------------------
+
+- Podemos conservar una representación más precisa de la unificación de las ramas en la línea de
+tiempo
+- Al trabajar con otros desarrolladores, merge es menos propenso a causar confusiones al conservar
+la historia de commits
+
+Beneficios de usar Rebase
+-------------------------
+
+- Podemos mantener una historia de commits lineal y menos fragmentada
+- Nos da una historia de commits mas limpia
+
