@@ -85,3 +85,68 @@ de venir arrastrando errores de antiguos commits sin habernos dado cuenta.
 > git bisect good <hash>
 > git bisect bad <hash>
 
+Si aborta porque nos olvidamos de hacer un commit, retomamos la actividad con
+
+> git bisect next
+
+Bisect selecciona un hash intermedio aleatoriamente y espera que lo marquemos como bueno o malo.
+Hacemos el testeo y en base a los resultados lo marcamos
+
+> git bisect good ----> > git bisect bad
+
+Bisect sigue buscando y achicando la brecha entre hash buenos y malos hasta que lleguemos al punto
+que no hay más para validar. Y nos devuelve un resultado.
+
+Una vez indentificado el hash con problemas, damos cierre al bisect
+
+> git bisect reset
+-------------------------------------------------------------------
+
+Tags
+----
+
+Son etiquetas que agregamos a los commits a modo de distinción para identificar lanzamientos de 
+versiones, hitos, etc ...
+
+Si le voy a poner una etiqueta al commit actual:
+
+> git tag <nombre_del_tag>
+
+Si queremos poner una etiqueta en un commit antiguo
+
+> git tag <nombre_del_tag> <hash>
+
+Tag Ligeros o No Anotados
+-------------------------
+
+Se especifica nombre del tag al crearlo (y hash en caso de aplicarlo en un commit antiguo).
+No incluyen info adicional
+
+Tag Anotados
+------------
+
+Para el commit actual:
+> git tag -a <nombre_del_tag> -m <mensaje>
+
+Para commits antiguos:
+> git tag -a <nombre_del_tag> <hash> -m <mensaje>
+
+Si queremos modificar el mensaje
+
+> git tag -a -f <nombre_del_tag> -m <mensaje_cambiado>
+
+Elimar tag:
+
+> git tag -d <nombre_del_tag>
+
+Enviar tags a repo remoto:
+
+> git push origin <nombre_del_tag>
+
+Si tenemos muchos tags:
+
+> git push origin --tags
+
+Recibir tags de un repo remoto:
+
+> git fetch origin --tags
