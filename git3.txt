@@ -63,6 +63,10 @@ Para recuperar el ultimo stash
 
 > git stash apply
 
+Para recuperar el ultimo stash y eliminarlo de la lista:
+
+> git stash pop
+
 Para ver que tenemos el stash
 
 > git stash list
@@ -70,6 +74,10 @@ Para ver que tenemos el stash
 Para recuperar stash mas antiguos
 
 > git stash apply --index #indice
+
+Para limpiar la lista de stash:
+
+> git stash clear
 -------------------------------------------------------------------
 
 Bisect
