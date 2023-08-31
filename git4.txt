@@ -18,3 +18,4 @@ quedan en el staging area, como si recién hubiésemos hecho "git add"
 conserva en el archivo, listo para hacer un git add si es necesario.
 
 --hard --> Mueve el HEAD y la RAMA y los cambios no quedan en ningún lado.
+
