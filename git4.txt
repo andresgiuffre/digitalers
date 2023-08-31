@@ -3,5 +3,9 @@ REVERT
 
 git revert <hash>
 
+<<<<<<< HEAD
 asdadsads
 12345
+=======
+asdadsads
+>>>>>>> parent of cc33d78 (Reverse)
