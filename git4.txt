@@ -47,3 +47,16 @@ Para buscar en el historial de commits
 
 git log -S <string>
 
+---------------------------------------------------
+
+REFLOG
+------
+
+git reflog
+
+---------------------------------------------------
+
+Restauracion
+------------
+
+
