@@ -158,8 +158,3 @@ Si tenemos muchos tags:
 Recibir tags de un repo remoto:
 
 > git fetch origin --tags
-
--
-2
-3
-4

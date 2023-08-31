@@ -1,0 +1,20 @@
+REVERT
+------
+
+git revert <hash al que quiero revertir>
+
+
+RESET
+-----
+
+git reset [tipo] <hash>
+
+3 tipos de reset
+
+--soft --> Mueve el HEAD y la RAMA al commit que le especificamos pero los cambios que teníamos antes
+quedan en el staging area, como si recién hubiésemos hecho "git add"
+
+--mixed --> Mueve el HEAD y la RAMA pero no conserva los cambios en el staging area. Sin embargo los 
+conserva en el archivo, listo para hacer un git add si es necesario.
+
+--hard --> Mueve el HEAD y la RAMA y los cambios no quedan en ningún lado.
