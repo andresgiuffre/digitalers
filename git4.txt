@@ -18,3 +18,32 @@ quedan en el staging area, como si recién hubiésemos hecho "git add"
 conserva en el archivo, listo para hacer un git add si es necesario.
 
 --hard --> Mueve el HEAD y la RAMA y los cambios no quedan en ningún lado.
+
+--------------------------------
+
+Depuración de los repositorios
+------------------------------
+
+BLAME
+-----
+
+Nos devuelve en qué commit se introdujeron los cambios, quien los introdujo, fecha y hora.
+
+git blame <nombre_de_un_archivo>
+
+git blame -L 30,60 <nombre_del_archivo>
+
+
+GREP
+----
+
+Se utiliza para hacer búsquedas, normalmente de una cadena de texto en archivos o log de commits.
+
+git grep -n <string> 
+
+git grep -c <string> --> Nos devuelve en qué archivo aparece y cuántas veces aparece.
+
+Para buscar en el historial de commits
+
+git log -S <string>
+
