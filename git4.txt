@@ -1,0 +1,5 @@
+REVERT
+------
+
+git revert <hash>
+
