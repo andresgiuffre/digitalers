@@ -59,4 +59,43 @@ git reflog
 Restauracion
 ------------
 
+Habiendo hecho un "git reset --hard <hash>"
+En el reflog me puedo fijar cual fue el hash del commit donde tenía los cambios que perdí.
+Una vez que tenemos el hash del commit perdido, hacemos un switch con la opción --detach
+
+git switch --detach <hash_perdido>
+
+Creamos una nueva rama con los cambios que habíamos perdido
+
+git switch -c <nombre_de_la_rama_nueva>
+
+Si queremos fusionar con la rama principal o con la que queramos. Hacemos un switch a la rama con la
+que queremos fusionarnos
+
+git switch <rama>
+
+Hacemos un merge
+
+git merge <nombre_de_la_rama_nueva> --> la que habíamos creado con el switch -c
+
+-----------------------------------------------------------------
+
+ALIAS
+-----
+
+Definimos alias para los comandos git
+
+git config --global alias.<nombre_alias> "log --oneline --graph --all"
+
+Para lanzar el comando usando el alias
+
+git <nombre_alias>
+
+------------------------------------------------------------------
+
+Plantilla de commits
+--------------------
+
+
+git config --global commit.template <archivo_de_commit>
 
