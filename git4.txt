@@ -96,6 +96,18 @@ git <nombre_alias>
 Plantilla de commits
 --------------------
 
+Se trata de crear un archivo de texto con una plantilla para realizar un ingreso de información
+standarizado.
+
+Primer paso, crear el archivo de texto con los items a completar.
+Luego agregar el archivo a la configuración global
 
 git config --global commit.template <archivo_de_commit>
+
+La próxima vez que se realice un commit, hacerlo sin ningún argumento.
+
+git commit
+
+Esto abrirá un editor de texto donde completaremos los items de la template. Al guardar y salir
+se realizará el commit.
 
