@@ -56,7 +56,7 @@ git reflog
 
 ---------------------------------------------------
 
-Restauracion-
+Restauracion
 ------------
 
 Habiendo hecho un "git reset --hard <hash>"
