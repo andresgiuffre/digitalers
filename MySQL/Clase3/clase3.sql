@@ -69,6 +69,103 @@ Truncate elimina todos los registro de la tabla y resetea los valores del AUTO_I
 
 TRUNCATE TABLE <tabla>;
 
+----------------------------------------------------
+
+FUNCIONES MATEMATICAS INTEGRADAS
+--------------------------------
+
+ROUND()
+
+Funcion que sirve para redondear valores numéricos.
+
+SELECT ROUND(EntrancePrice) FROM conciertos WHERE Band = 'Elton John';
+
+Podemos redondear una operacion matemática y asignarle que solo mantenga 2 decimales.
+SELECT ROUND(EntrancePrice/3,2) FROM conciertos;
+
+
+CEIL()
+
+Devuelve el resultado de una operación matemática redondeado hacia arriba.
+
+SELECT EntrancePrice, EntrancePrice * 1.21 AS 'Precio + IVA', CEIL(EntrancePrice * 1.21) AS 'Precio Redondeado' 
+FROM conciertos;
+
+
+FLOOR()
+
+Devuelve el resultado de una operación pero redondeado hacia abajo.
+
+SELECT EntrancePrice, EntrancePrice * 1.21 AS 'Precio + IVA', FLOOR(EntrancePrice * 1.21) AS 'Precio Redondeado' 
+FROM conciertos;
+
+
+MOD()
+
+Devuelve el resto de una división entre números
+
+SELECT MOD(15, 4);
+SELECT MOD(EntrancePrice, 2) FROM conciertos;
+
+
+POW()
+
+Eleva un número a una determinada potencia. (Ejemplo, 2 al cubo)
+
+SELECT POW(2, 3);
+SELECT POW(TicketsSold, 1/2) FROM conciertos; --> Saco raiz cuadrada de los Tickets vendidos
+
+----------------------------------------------------------------
+
+FUNCIONES DE AGREGADO
+---------------------
+
+COUNT()
+
+Devuelve una cantidad de valores que tengamos en un campo específico
+
+Devuelve la cantidad de registros
+SELECT COUNT(*) FROM conciertos;
+
+Podemos agregarle condiciones para filtrar la búsqueda
+SELECT COUNT(*) FROM conciertos WHERE Country = 'Germany';
+
+
+SUM()
+
+Devuelve una suma de valores
+
+SELECT SUM(TicketsSold) FROM conciertos WHERE City LIKE '%erli%';
+
+
+MIN()
+
+Nos devuelve el valor mínimo relacionado a la búsqueda que se realice
+
+SELECT MIN(EntrancePrice) AS 'Valor Mínimo' from conciertos;
+
+
+MAX()
+
+Nos devuelve el valor máximo de la búsqueda
+
+SELECT MAX(EntrancePrice) AS 'Valor Máximo' from conciertos;
+
+
+AVG()
+
+Devuelve un promedio del campo numérico que le especifiquemos
+
+SELECT AVG(TicketsSold) FROM conciertos WHERE City = 'Berlin';
+
+
+GROUP BY
+
+SELECT Country, City, SUM(TicketsSold) AS TotalSold, AVG(EntrancePrice) AS AveragePrice 
+FROM conciertos GROUP BY City;
+
+SELECT Country, City, SUM(TicketsSold) AS TotalSold, AVG(EntrancePrice) AS AveragePrice 
+FROM conciertos GROUP BY City HAVING AveragePrice < 200;
 
 
 */
