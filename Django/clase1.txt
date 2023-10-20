@@ -1,0 +1,100 @@
+XML - eXtensive MarkUp Language
+
+IP - Internet Protocol 
+
+educacionit.com --> Tiene una dirección IP asociada 186.12.20.60 (inventada)
+
+GET y POST
+
+CGI - Common Gateway Interface
+
+WSGI - Web Server Gateway Interface
+
+    --->---Peticion del cliente --->---
+    |                                  |
+Servidor                        Python/Django --> BB DD
+    |                                  |
+    ---<--- Respuesta de Django ---<---
+
+\_______________________________________________________/
+
+                    HOSTING
+
+
+Modulos Web para Python
+
+- Django: Framework Full-stack con muchas características
+
+- Flask: Nos da una base mínima para el desarrollo de proyectos pequeños
+
+- Bottle: Más ligero que flask, para desarrollos muy muy pequeños
+
+- Pyramid: Framework Full-stack para proyectos medianos/grandes
+
+- Web2py: Framework Full-stack centrado en la facilidad de uso
+
+- Fast API: Excelente opción para crear API REST
+
+
+Empezando el proyecto
+---------------------
+
+Me posiciono sobre la carpeta donde voy a crear el proyecto y creo un entorno virtual
+
+> pip install virtualenv
+> virtualenv venv
+> venv\Scripts\activate
+> pip install Django
+
+Inicializamos el proyecto con la siguiente ejecución:
+
+> django-admin startproject <nombre_del_proyecto>
+> cd <nombre_del_proyecto>
+> python manage.py runserver
+
+Esto nos ejecuta el Servidor. Ahora tenemos que inicializar la aplicación
+
+> python manage.py startapp <nombre_de_la_app>
+
+Editar archivo de configuración en <nombre_del_proyecto>\<nombre_del_proyecto>\settings.py
+Ahi dentro buscar la lista llamada INSTALLED_APPS y agregar al final la aplicación 
+
+'<nombre_de_la_app>.apps.MyappConfig',
+
+----------------------------------------------------------
+
+VISTAS
+------
+
+Las vistas (funciones) en Django siguen un patrón de diseño llamado MVC (Model-View-Controller)
+
+Modelo -> Representa los datos y reglas de negocio de la app
+
+Vistas -> Interfaz que presenta los datos al usuario y maneja las interacciones que haya con el usuario
+
+Controlador -> Intermediario entre el Modelo y las Vistas
+
+Editamos el archivo <nombre_de_la_app>\views.py y agregamos una función que reciba un request:
+
+####views.py####
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("Hola, mundo!")
+################
+
+Creamos el archivo urls.py dentro de la carpeta de la aplicación:
+
+####urls.py####
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index")
+]
+###############
+
+
+
+
