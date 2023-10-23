@@ -1,9 +1,15 @@
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
 import sqlite3
 
 
 def index(request):
-    return HttpResponse("<html><strong>Hola</strong>, <em>mundo</em>!")
+    ctx = {"nombre": "Juan",
+           "cursos": 5,
+           "curso_actual": {"nombre": "Python y Django", "turno": "noche"},
+           "cursos_anteriores": ["Java", "PHP", "JavaScript", "Python"]
+           }
+    return render(request, "myapp/index.html", ctx)
 
 
 def acerca_de(request):
@@ -14,31 +20,10 @@ def cursos(request):
     conn = sqlite3.connect("cursos.db")
     cursor = conn.cursor()
     cursor.execute("SELECT nombre, inscripciones FROM cursos")
-
-    html = """
-    <html>
-    <title>Lista de Cursos</title>
-    <table style="border: 1px solid">
-        <thead>
-            <tr>
-                <th>Cursos</th>
-                <th>Inscripciones</th>
-            </tr>
-        </thead>
-    """
-
-    for (nombre, inscripciones) in cursor.fetchall():
-        html += f"""
-        <tr>
-            <td>{nombre}</td>
-            <td>{inscripciones}</td>
-        </tr>
-        """
-
-    html += "</table></html>"
-
+    cursos = cursor.fetchall()
     conn.close()
-    return HttpResponse(html)
+    ctx = {"cursos": cursos}
+    return render(request, "myapp/cursos.html", ctx)
 
 
 def cursos_json(request):
