@@ -1,37 +1,40 @@
+{% extends "myapp/layout.html" %}
 {% load static %}
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href='{% static "myapp/styles.css" %}'>
-    </head>
-    
-    <strong>Hola</strong>, <em>{{ nombre }}</em>!!!!!!
 
-    {% if curso_actual.nombre == "Python y Django" %}
+{% block title %}
+Página principal
+{% endblock %}
 
-    <p>Ya tomaste {{ cursos }} cursos y ahora estás 
-        cursando {{ curso_actual.nombre }} en el turno {{ curso_actual.turno }}.<br>
-    El primer curso que hiciste fue el de {{ cursos_anteriores.1 }}</p>
+{% block content %}
+<strong>Hola</strong>, <em>{{ nombre }}</em>!!!!!!
 
-    {% elif curso_actual.nombre == "Java" %}
+{% if curso_actual.nombre == "Python y Django" %}
 
-        <p>Actualmente estás cursando {{ curso_actual.nombre }}</p>
+<p>Ya tomaste {{ cursos }} cursos y ahora estás 
+    cursando {{ curso_actual.nombre }} en el turno {{ curso_actual.turno }}.<br>
+El primer curso que hiciste fue el de {{ cursos_anteriores.1 }}</p>
 
-    {% else %}
+{% elif curso_actual.nombre == "Java" %}
 
-        <p>Estás cursando {{ curso_actual.nombre }}</p>
+    <p>Actualmente estás cursando {{ curso_actual.nombre }}</p>
 
-    {% endif %}
+{% else %}
+
+    <p>Estás cursando {{ curso_actual.nombre }}</p>
+
+{% endif %}
 
 
-    <h1>Listado de Cursos Hechos</h1>
-    <ul>
-        {% for curso in cursos_anteriores %}
-            <li>{{ curso }}</li>
-        {% endfor %}
-    </ul>
+<h1>Listado de Cursos Hechos</h1>
+<ul>
+    {% for curso in cursos_anteriores %}
+        <li>{{ curso }}</li>
+    {% endfor %}
+</ul>
 
-    <a href='{% url "cursos" %}'>Ver tabla de cursos</a>
+<a href='{% url "cursos" %}'>Ver tabla de cursos</a>
+<br><br>
+<a href='{% url "aeropuertos" %}'>Ver listado de Aeropuertos</a>
 
-    <img class="imagen" src='{% static "myapp/django.png" %}' />
-
-</html>
+<img class="imagen" src='{% static "myapp/django.png" %}' />
+{% endblock %}

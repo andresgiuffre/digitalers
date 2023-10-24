@@ -1,0 +1,24 @@
+{% extends "myapp/layout.html" %}
+
+{% block title %}
+Lista de Aeropuertos
+{% endblock %}
+
+{% block content %}
+<table class="tabla-aeropuertos">
+    <thead>
+        <tr>
+            <th>Aeropuerto</th>
+            <th>Ciudad</th>
+            <th>País</th>
+        </tr>
+    </thead>
+    {% for nombre, ciudad, pais in lista_aeropuertos %}
+        <tr>
+            <td>{{ nombre }}</td>
+            <td>{{ ciudad }}</td>
+            <td>{{ pais }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

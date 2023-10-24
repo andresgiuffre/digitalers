@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href='{% static "myapp/styles.css" %}'>
+    <title>
+        {% block title %}
+            Mi aplicación de Django
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <br><br>
+        <small>&copy; Mi aplicación de Django</small>
+    </footer>
+</body>
+</html>

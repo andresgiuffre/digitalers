@@ -86,4 +86,12 @@ static tambien, de esta forma (pongo varios ejemplos):
 <img class="imagen" src='{% static "myapp/django.png" %}' />
 
 
+EXTENSION DE PLANTILLAS
+-----------------------
+
+Creamos una plantilla que va a extender a otras. En esa plantilla metemos todo el código que se repite
+a través de las demás páginas. Y después en las demás páginas ponemos en la línea 1:
+
+{% extends "<archivo_de_extension>.html" %}
+
 

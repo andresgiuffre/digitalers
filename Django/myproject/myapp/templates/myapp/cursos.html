@@ -1,23 +1,27 @@
+{% extends "myapp/layout.html" %}
 {% load static %}
-<html>
-    <title>Lista de Cursos</title>
-    <link rel="stylesheet" type="text/css" href='{% static "myapp/styles.css" %}'>
-    <table class="tabla-cursos">
-        <thead>
-            <tr>
-                <th>Cursos</th>
-                <th>Inscripciones</th>
-            </tr>
-        </thead>
 
-        {% for nombre, inscripciones in cursos %}
+{% block title %}
+Lista de Cursos
+{% endblock %}
+
+{% block content %}
+<table class="tabla-cursos">
+    <thead>
         <tr>
-            <td>{{ nombre }}</td>
-            <td>{{ inscripciones }}</td>
+            <th>Cursos</th>
+            <th>Inscripciones</th>
         </tr>
-        {% endfor %}
-    </table>
+    </thead>
 
-    <br>
-    <a href='{% url "myindex" %}'>Ir al inicio</a>
-</html>
+    {% for nombre, inscripciones in cursos %}
+    <tr>
+        <td>{{ nombre }}</td>
+        <td>{{ inscripciones }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href='{% url "myindex" %}'>Ir al inicio</a>
+{% endblock %}
