@@ -61,6 +61,8 @@ Ahi dentro buscar la lista llamada INSTALLED_APPS y agregar al final la aplicaci
 
 '<nombre_de_la_app>.apps.<nombre_de_la_app>Config',
 
+Ejemplo: 'myapp.apps.MyappConfig',
+
 ----------------------------------------------------------
 
 VISTAS
