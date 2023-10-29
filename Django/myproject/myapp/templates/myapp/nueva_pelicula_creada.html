@@ -1,0 +1,17 @@
+{% extends "myapp/layout.html" %}
+
+{% block content %}
+<h3>Se ha ingresado correctamente la siguiente película:</h3>
+<p>Nombre de la Película: {{ pelicula.nombre }}</p>
+<p>Fecha de Estreno: {{ pelicula.fecha_estreno }}</p>
+<p>Apta para mayores de {{ pelicula.edad_minima }} años.</p>
+<p>Preventa Online:
+    {% if pelicula.preventa_online %}
+        Si.
+    {% else %}
+        No.
+    {% endif %}
+</p>
+<p><a href='{% url "nueva_pelicula" %}'>Ir al inicio</a></p>
+<p><a href='{% url "tabla_peliculas" %}'>Ver tabla</a></p>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "myapp/layout.html" %}
+
+{% block title %}
+Nueva Película
+{% endblock %}
+
+{% block content %}
+<h1>Nueva Película</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Cargar película" />
+</form>
+{% endblock %}

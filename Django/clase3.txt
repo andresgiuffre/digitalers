@@ -1,0 +1,39 @@
+FORMULARIOS
+-----------
+
+Para armar un formulario, creamos el archivo forms.py y lo armamos como una clase:
+
+----------------------------------
+from django import forms
+
+
+class FormularioCurso(forms.Form):
+    nombre = forms.CharField(label="Nombre", max_length=128)
+    inscripciones = forms.IntegerField(label="Inscriptos")
+----------------------------------
+
+Luego necesitamos crear la vista en views.py (ver nuevo_curso()), la 
+plantilla HTML (ver nuevo_curso.html) y la URL en urls.py
+
+Para realizar el envío de datos y validaciones de Django usamos un condicional que 
+revise si request.method es "POST" y en base a eso enviar los datos. 
+request.POST contiene los datos ingresados en el formulario.
+
+----------------------------------
+def nuevo_curso(request):
+    if request.method == "POST":
+        form = forms.FormularioCurso(request.POST)
+        if form.is_valid():
+            return HttpResponse("Curso creado correctamente!")
+    else:    
+        form = forms.FormularioCurso()
+    ctx = { "form": form }
+    return render(request, "myapp/nuevo_curso.html", ctx)
+----------------------------------
+
+Una vez que los datos fueron validados por Django, se guardan en un nuevo diccionario llamado
+form.cleaned_data, el cual contiene como key los nombres de las variables usadas en el formulario, y como
+value los datos ingresados manualmente por el usuario.
+
+Ese diccionario lo usamos para insertar los datos en la base de datos. (Ver vista nuevo_curso())
+

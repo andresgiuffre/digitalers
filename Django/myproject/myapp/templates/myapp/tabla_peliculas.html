@@ -1,0 +1,34 @@
+{% load static %}
+<html>
+    <head>
+        <title>Lista de Películas</title>
+        <link rel="stylesheet" type="text/css" href='{% static "myapp/styles.css" %}'>
+    </head>
+
+    <table class="tabla-cursos">
+        <thead>
+            <tr>
+                <th>Película</th>
+                <th>Fecha de Estreno</th>
+                <th>Apta para Mayores</th>
+                <th>Preventa</th>
+            </tr>
+        </thead>
+        {% for nombre, fecha_estreno, edad_minima, preventa_online in peliculas %}
+            <tr>
+                <td>{{ nombre }}</td>
+                <td>{{ fecha_estreno }}</td>
+                <td>{{ edad_minima }}</td>
+                <td>
+                    {% if pelicula.preventa_online %}
+                        Si.
+                    {% else %}
+                        No.
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href='{% url "index" %}'>Ir al inicio</a>
+</html>
