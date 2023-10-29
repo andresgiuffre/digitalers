@@ -59,7 +59,7 @@ Esto nos ejecuta el Servidor. Ahora tenemos que inicializar la aplicación
 Editar archivo de configuración en <nombre_del_proyecto>\<nombre_del_proyecto>\settings.py
 Ahi dentro buscar la lista llamada INSTALLED_APPS y agregar al final la aplicación 
 
-'<nombre_de_la_app>.apps.MyappConfig',
+'<nombre_de_la_app>.apps.<nombre_de_la_app>Config',
 
 ----------------------------------------------------------
 
