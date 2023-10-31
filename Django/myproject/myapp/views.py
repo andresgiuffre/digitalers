@@ -1,6 +1,7 @@
 from django.http import HttpResponse, JsonResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render
+from .models import Curso
 from . import forms
 import sqlite3
 
@@ -19,35 +20,22 @@ def acerca_de(request):
 
 
 def cursos(request):
-    conn = sqlite3.connect("cursos.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT nombre, inscripciones FROM cursos")
-    cursos = cursor.fetchall()
-    conn.close()
+    cursos = Curso.objects.all()
     ctx = {"cursos": cursos}
     return render(request, "myapp/cursos.html", ctx)
 
 
 def curso(request, nombre_curso):
-    conn = sqlite3.connect("cursos.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT nombre, inscripciones FROM cursos WHERE nombre=?", [nombre_curso])
-    curso = cursor.fetchone()
-    
-    if curso is None:
-        raise Http404
-    
+    try:
+        curso = Curso.objects.get(nombre=nombre_curso)
+    except Curso.DoesNotExist:
+        raise Http404    
     ctx = {"curso": curso}
-    conn.close()
     return render(request, "myapp/curso.html", ctx)
 
 
 def cursos_json(request):
-    conn = sqlite3.connect("cursos.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT nombre, inscripciones FROM cursos")
-    response = JsonResponse(cursor.fetchall(), safe=False)
-    conn.close()
+    response = JsonResponse(list(Curso.objects.values()), safe=False)
     return response
 
 
@@ -55,16 +43,30 @@ def nuevo_curso(request):
     if request.method == "POST":
         form = forms.FormularioCurso(request.POST)
         if form.is_valid():
-            conn = sqlite3.connect("cursos.db")
-            cursor = conn.cursor()
-            cursor.execute("INSERT INTO cursos VALUES (?, ?)", (form.cleaned_data["nombre"], form.cleaned_data["inscripciones"]))
-            conn.commit()
-            conn.close()
+            Curso.objects.create(nombre=form.cleaned_data["nombre"], inscripciones=form.cleaned_data["inscripciones"], turno=form.cleaned_data["turno"])            
             return HttpResponseRedirect(reverse("cursos"))
     else:    
         form = forms.FormularioCurso()
     ctx = { "form": form }
     return render(request, "myapp/nuevo_curso.html", ctx)
+
+
+def actualizar_curso(request, pk):
+    curso_actual = Curso.objects.get(id=pk) #Obtengo el registro de la BBDD
+    if request.method == "POST":
+        form = forms.FormularioCurso(request.POST, instance=curso_actual)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("cursos"))
+    else:
+        form = forms.FormularioCurso(instance=curso_actual)
+    return render(request, 'myapp/actualizar_curso.html', {'form': form})
+
+
+def eliminar_curso(request, pk):
+    eliminar_curso = Curso.objects.get(id=pk)
+    eliminar_curso.delete()
+    return HttpResponseRedirect(reverse("cursos"))
 
 
 def aeropuertos(request):

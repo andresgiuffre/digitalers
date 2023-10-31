@@ -1,6 +1,12 @@
 {% extends "myapp/layout.html" %}
 
 {% block content %}
-<h1>Información del Curso {{ curso.0 }}</h1>
-<h3>Inscripciones: {{ curso.1 }}</h3>
+<h3>Id del curso: {{ curso.id }}</h3>
+<h3>Nombre del Curso: {{ curso.nombre }}</h3>
+<h3>Inscripciones: {{ curso.inscripciones }}</h3>
+
+<a href="{% url 'cursos' %}"><button>Volver</button></a>
+<a href="{% url 'actualizar_curso' curso.id %}"><button>Actualizar</button></a>
+<a href="{% url 'eliminar_curso' curso.id %}"><button>Eliminar</button></a>
+<br>
 {% endblock %}

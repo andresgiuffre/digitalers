@@ -9,20 +9,24 @@ Lista de Cursos
 <table class="tabla-cursos">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Cursos</th>
             <th>Inscripciones</th>
+            <th>Turno</th>
         </tr>
     </thead>
 
-    {% for nombre, inscripciones in cursos %}
+    {% for curso in cursos %}
     <tr>
-        <td>{{ nombre }}</td>
-        <td>{{ inscripciones }}</td>
+        <td><a href="{% url 'curso' curso.nombre %}">{{ curso.id }}</a></td>
+        <td>{{ curso.nombre }}</td>
+        <td>{{ curso.inscripciones }}</td>
+        <td>{{ curso.turno }}</td>
     </tr>
     {% endfor %}
 </table>
 
 <br>
-<p><a href='{% url "myindex" %}'>Ir al inicio</a></p>
-<p><a href='{% url "nuevo_curso" %}'>Cargar nuevo curso</a></p>
+<a href='{% url "myindex" %}'><button>Ir al inicio</button></a>
+<a href='{% url "nuevo_curso" %}'><button>Cargar nuevo curso</button></a>
 {% endblock %}

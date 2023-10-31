@@ -1,21 +1,26 @@
 from django import forms
+from .models import Curso
 
 
-class FormularioCurso(forms.Form):
-    nombre = forms.CharField(label="Nombre", max_length=128)
-    inscripciones = forms.IntegerField(label="Inscriptos")
-    solo_empresas = forms.BooleanField(label="Solo empresas?", required=False)
-    TURNOS = (
-        (1, "Mañana"),
-        (2, "Tarde"),
-        (3, "Noche")
-    )
-    turno = forms.ChoiceField(label="Turno", choices=TURNOS)
-    fecha_inicio = forms.DateField(
-        label="Fecha de Inicio",
-        #input_formats=["%d/%m/%Y"] # ---> dd/mm/AAAA
-        widget=forms.DateInput(attrs={"type": "date"})
-    )
+class FormularioCurso(forms.ModelForm):
+    class Meta:
+        model = Curso
+        fields = ('id', 'nombre', 'inscripciones', 'turno')
+        labels = {
+            'nombre': 'Nombre',
+            'inscripciones': 'Inscripciones',
+            'turno': 'Turnos'
+        }
+
+        nombre = forms.CharField(max_length=128)
+        inscripciones = forms.IntegerField()
+        turno = forms.ChoiceField()
+        
+        #fecha_inicio = forms.DateField(
+        #    label="Fecha de Inicio",
+            #input_formats=["%d/%m/%Y"] # ---> dd/mm/AAAA
+        #    widget=forms.DateInput(attrs={"type": "date"})
+        #)
 
 
 class FormularioPelicula(forms.Form):

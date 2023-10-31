@@ -1,0 +1,58 @@
+DEFINICION DE UN MODELO
+-----------------------
+
+Django ORM - Dialecto que Django utiliza para comunicarse con distintos motores de bases de datos.
+
+La base de datos que vamos a utilizar la configuramos en el archivo settings.py bajo la variable 
+DATABASES.
+
+Se debe editar el archivo models.py de la aplicación y crear la clase modelo que se va a aplicar luego
+en la base de datos.
+
+Ejemplo
+-----------------------
+from django.db import models
+
+# Create your models here.
+class Curso(models.Model):
+    nombre = models.CharField(max_length=128)
+    inscripciones = models.IntegerField()
+-------------------------
+
+Una vez creado el modelo y configurada la base en settings.py, detener el servidor y ejecutar los comandos:
+
+1) python manage.py makemigrations <nombre_de_la_app>
+
+2) python manage.py migrate
+
+El primer comando crea un archivo con los cambios que se deben aplicar.
+El segundo comando aplica los cambios.
+
+IMPORTANTE: Cada vez que se crea un modelo nuevo o se modifica cualquier aspecto del archivo
+models.py, es necesario ejecutar los 2 pasos de migraciones. 
+
+Al empezar a trabajar con las vistas, es necesario importar el modelo.
+
+Ejemplo: from .models import Curso
+
+Si realizamos una consulta para traer todos los datos de la base, por Ejemplo la vista cursos()
+
+cursos = Curso.objects.all()
+
+también tendremos que actualizar la plantilla donde se procesaban estos datos (Ver cursos.html)
+
+    {% for curso in cursos %}
+    <tr>
+        <td>{{ curso.nombre }}</td>
+        <td>{{ curso.inscripciones }}</td>
+    </tr>
+    {% endfor %}
+
+----------------------------------------------------
+
+La actualización de la vista nuevo_curso() implica eliminar la conexión a la base de datos
+y el agregado del registro. Solamente lanzamos Curso.objects.create() una vez pasada la 
+validación de los datos ingresados (con el método is_valid()). Ver vista nuevo_curso() para mayor
+referencia.
+
+
