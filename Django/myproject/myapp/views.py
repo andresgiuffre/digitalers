@@ -43,7 +43,7 @@ def nuevo_curso(request):
     if request.method == "POST":
         form = forms.FormularioCurso(request.POST)
         if form.is_valid():
-            Curso.objects.create(nombre=form.cleaned_data["nombre"], inscripciones=form.cleaned_data["inscripciones"], turno=form.cleaned_data["turno"])            
+            form.save()
             return HttpResponseRedirect(reverse("cursos"))
     else:    
         form = forms.FormularioCurso()

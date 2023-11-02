@@ -1,0 +1,141 @@
+Listado de campos para usar en Modelos
+
+AutoField
+BigAutoField
+BigIntegerField
+BinaryField
+BooleanField
+CharField
+DateField
+DateTimeField
+DecimalField
+DurationField
+EmailField
+FileField
+FilePathField
+FloatField
+ImageField
+IntegerField
+GenericIPAddressField
+NullBooleanField
+PositiveIntegerField
+PositiveSmallIntegerField
+SlugField
+SmallIntegerField
+TextField
+TimeField
+URLField
+UUIDField
+ForeignKey
+ManyToManyField
+OneToOneField
+
+Consola interactiva
+-------------------
+
+python manage.py shell
+
+
+FILTROS
+-------
+
+Funcion de modelos = filter()
+
+>>> cursos = Curso.objects.filter(inscripciones__gt=10)
+>>> for curso in cursos:
+...     print(curso.nombre, curso.inscripciones)
+...
+Java 12
+C++ 25
+Swift 12
+
+__gt --> Greater Than (Mayor que)
+__lt --> Less Than (Menor que)
+__gte y __lte --> Greater Than or Equal y Less Than or Equal (Mayor o Igual que y Menor o Igual que)
+= --> para igualdad
+
+Filtros para campos de texto:
+
+- contains / icontains
+- startswith / istartswith
+- endswith / iendswith
+
+Contains: Se fija si la cadena que se le pasa está dentro de lo que se quiere validar
+
+>>> cursos = Curso.objects.filter(nombre__contains="P")
+>>> for curso in cursos:
+...     print(curso.nombre)
+...
+Python Programming
+PHP
+
+Startswith y Endswith : "Comienza con" o "Termina con" una cadena que le pasemos
+
+>>> cursos = Curso.objects.filter(nombre__startswith="Py")
+>>> for curso in cursos:
+...     print(curso.nombre)
+...
+Python Programming
+
+icontains, iendswith, istartswith ignoran mayúsculas y minúsculas (la i es de insensitive)
+
+Busquedas combinadas:
+
+>>> cursos = Curso.objects.filter(nombre__startswith="P", inscripciones__gt=9)
+>>> for curso in cursos:
+...     print(curso.nombre, curso.inscripciones)
+...
+Python Programming 10
+
+--------------------------------------------------------
+
+ModelForm
+---------
+
+--------------------------------------------------
+
+Agregar Campos a modelos con datos ya existentes
+------------------------------------------------
+
+Aparece un cartel que dice:
+
+"Está tratando de agregar un campo no nulo <campo> a <tabla> sin un valor por defecto. Esto no 
+se puede hacer (la base necesita rellenar las filas existentes)"
+
+Se puede agregar un valor default en el modelo, o bien null=True.
+Ejemplo:
+
+turno = models.CharField(max_length=128, choices=TURNOS, null=True)
+
+----------------------------------------------------------
+
+Campos con refencia a otros modelos
+-----------------------------------
+
+Se usa una ForeignKey para enlazar tablas. (Ver models.py)
+
+>>> from myapp.models import Curso, Profesor
+>>> profesor_juan = Profesor.objects.create(nombre="Juan", monotributista=True)
+>>> curso_go = Curso.objects.create(nombre="Go", inscripciones=15, turno="Tarde", profesor=profesor_juan)
+>>> curso_go.profesor.nombre
+'Juan'
+>>> curso_go.profesor.monotributista
+True
+
+-----
+
+Agregamos un curso nuevo (Flask) y se lo asignamos al profe Juan
+
+>>> curso_flask = Curso.objects.create(nombre="Flask", inscripciones=18, turno="Noche", profesor=profesor_juan)
+>>> for curso in profesor_juan.cursos.all():
+...     print(curso.nombre, curso.inscripciones)
+...
+Go 15
+Flask 18
+
+-----------------------------------
+
+
+
+
+
