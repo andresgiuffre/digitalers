@@ -1,0 +1,94 @@
+PASAJE A PRODUCCION
+-------------------
+
+https://www.pythonanywhere.com/pricing/
+
+1) Create a Beginner Account
+
+2) Ingresar los datos de la cuenta y confirmar el email de registro
+
+3) En el menu de navegación ir a Web
+
+4) Pulsar el botón de Add a new web app
+
+5) Se abre un asistente donde elegimos el framework con el que trabajar (Django) y la
+versión de Python que vamos a usar. Después le ponemos nombre al proyecto y comenzará a crear
+el entorno (demora unos minutos)
+
+6) Editar el archivo settings.py dentro de la carpeta del proyecto y definir estas 2 variables.
+
+DEBUG = False
+ALLOWED_HOSTS = ["<usuario>.pythonanywhere.com"]
+
+7) Ir al menú de navegación y pulsar en Files
+
+8) Si hay una carpeta con el nombre del proyecto, eliminarla
+
+9) Comprimir en ZIP el proyecto completo a subir
+
+10) Pulsar el botón de Upload a file y subir el archivo .ZIP
+
+11) Pulsar el link de Open Bash console here
+
+12) Abierto el terminal, escribir "unzip <archivo>.zip". Tipear exit para salir
+
+13) Volvemos a Web y pulsamos el botón de Reload
+
+14) Editar el archivo settings.py y agregar esta línea debajo de la línea STATIC
+
+STATIC_ROOT = '/home/<usuario>/myproject/static'
+
+15) En la página ir al menú de Files y subir el archivo settings.py con los cambios, pisando
+al que está en /myproject/myproject
+
+16) Ir una carpeta hacia atrás en la estructura de directorios (o sea, al /myproject) y abrir una 
+consola Bash
+
+17) Lanzar en el terminal el comando:
+
+python manage.py collectstatic
+
+18) Pulsar botón Reload en la parte de Web y probar la página (https://<usuario>.pythonanywhere.com/myapp)
+
+19) Ir a Databases en el menú de navegación
+
+20) Definir una contraseña e inicializar la base de datos
+
+21) Editar nuevamente settings.py y modificar los datos en DATABASES
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '<usuario>.mysql.pythonanywhere-services.com',
+        'USER': '<usuario>',
+        'PASSWORD': '<password>',
+        'NAME': '<usuario>$default',
+        'CHARSET': 'utf8',
+    },
+}
+
+22) Ir a Files y subir el archivo settings.py en /myproject/myproject
+
+23) Retroceder un nivel de directorio y abrir una terminal Bash
+
+24) Lanzar el comando:
+
+python manage.py migrate
+
+25) Ir a web y pulsar Reload
+
+LA APLICACION YA QUEDÓ PRODUCTIVA
+
+Configuración adicional
+
+Copiar el archivo settings.py como settings_dev.py y en este último revertir los cambios para
+que vuelva a quedar en ambiente de desarrollo.
+En el settings.py agregar estas línas al final de todo:
+
+try:
+    # Importar la configuración de desarrollo cuando el archivo settings_dev esté disponible
+    from settings_dev import *
+except ModuleNotFoundError:
+    # Si no está disponible, es porque se está corriendo en producción
+    pass
+

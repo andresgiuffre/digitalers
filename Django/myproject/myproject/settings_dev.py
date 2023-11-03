@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-yqsp*1i&!w63cyz641os0t#ragi$a2vvp0&%gumn-t2lv(6^s%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 
-ALLOWED_HOSTS = ["anndesg76.pythonanywhere.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -76,23 +76,23 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'anndesg76.mysql.pythonanywhere-services.com',
-        'USER': 'anndesg76',
-        'PASSWORD': '098iklñpo',
-        'NAME': 'anndesg76$default',
-        'CHARSET': 'utf8',
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'HOST': 'anndesg76.mysql.pythonanywhere-services.com',
+#         'USER': 'anndesg76',
+#         'PASSWORD': '098iklñpo',
+#         'NAME': 'anndesg76$default',
+#         'CHARSET': 'utf8',
+#     },
+# }
 
 
 # Password validation
@@ -131,16 +131,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/anndesg76/myproject/static'
+#STATIC_ROOT = '/home/anndesg76/myproject/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-try:
-    # Importar la configuración de desarrollo cuando el archivo settings_dev esté disponible
-    from settings_dev import *
-except ModuleNotFoundError:
-    # Si no está disponible, es porque se está corriendo en producción
-    pass
