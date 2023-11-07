@@ -12,13 +12,43 @@
     </title>
 </head>
 <body>
+    <nav>
+        <div class="container">
+            <a href="{% url 'cursos' %}">Inicio</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logoff</a>
+            {% endif %}
+            <a href="{% url 'acerca_de' %}">Acerca de</a>   
+            
+            {% if user.is_authenticated %}
+                <span>Bienvenido {{ user }}</span>
+            {% else %}
+                <span>Usuario no autenticado</span>
+            {% endif %}
+        </div>
+    </nav>
     <main>
-        {% block content %}
-        {% endblock %}
+        <div class="container-noflex">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
     <footer>
-        <br><br>
-        <small>&copy; Mi aplicación de Django</small>
+        <br>
+        <div class="container">
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+            
+            {% if user.is_authenticated %}
+                <div>Usuario en línea: <strong>{{ user }}</strong></div>
+            {% else %}
+                <div><strong>No hay ningún usuario conectado</strong></div>
+            {% endif %}
+            <small>&copy; Mi aplicación de Django</small>
+        </div>
     </footer>
 </body>
 </html>

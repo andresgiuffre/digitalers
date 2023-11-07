@@ -5,6 +5,31 @@
 <h3>Nombre del Curso: {{ curso.nombre }}</h3>
 <h3>Inscripciones: {{ curso.inscripciones }}</h3>
 
+{% for comentario in comentarios %}
+    <p>{{ comentario.usuario.username }} dijo: {{ comentario.contenido }}</p>
+{% empty %}
+    <p>No hay comentarios para este curso</p>
+{% endfor %}
+
+<form method="post" action="{% url 'agregar_comentario' curso.id %}">
+    {% csrf_token %}
+    {{ comentario_form.as_p }}
+    <button type="submit">Agregar Comentario</button>
+</form>
+
+{% for calificacion in calificaciones %}
+    <p>{{ calificacion.usuario.username }} calificó este curso con {{ calificacion.puntaje }}</p>
+{% empty %}
+    <p>No hay calificaciones para este curso</p>
+{% endfor %}
+
+<form method="post" action="{% url 'agregar_calificacion' curso.id %}">
+    {% csrf_token %}
+    {{ calificacion_form.as_p }}
+    {{ calificacion_form.puntaje.errors }}
+    <button type="submit">Agregar Calificación</button>
+</form>
+<br><br>
 <a href="{% url 'cursos' %}"><button>Volver</button></a>
 <a href="{% url 'actualizar_curso' curso.id %}"><button>Actualizar</button></a>
 <a href="{% url 'eliminar_curso' curso.id %}"><button>Eliminar</button></a>

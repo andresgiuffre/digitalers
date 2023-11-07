@@ -1,0 +1,21 @@
+{% extends 'myapp/layout.html' %}
+
+{% block content %}
+<h1>Registrar Usuario</h1>
+<br>
+
+<form method="post">
+    {% csrf_token %}
+    {% if form.errors %}
+        <h3>Tu formulario tiene errores</h3>
+        {% for field in form %}
+            {% if field.errors %}
+                {{ field.errors }}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {{ form.as_p }}
+    <p><button type="submit">Registrar</button></p>
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+SISTEMA DE LOGIN
+----------------
+
+from django.contrib.auth import authenticate, login, logout
+
+views.py
+ver vistas: cursos() logout_user() y registrar_usuarios()
+
+urls.py
+path("logout", views.logout_user, name="logout"),
+path("registrar", views.registrar_usuario, name="registrar"),
+
+Agregamos registrar.html y modificamos cursos.html y layout.html
+
+Agregamos un nuevo formulario en forms.py
+
+
+CONSOLA ADMIN
+-------------
+
+Agregar en urls.py del proyecto
+
+path('admin/', admin.site.urls),
+
+
+MODULO DE MENSAJES
+------------------
+
+from django.contrib import messages
+
+Modulo messages
+
+    - messages.SUCCESS --> se usa para mensajes de éxito
+    - messages.INFO --> se usa para mensajes informativos
+    - messages.WARNING --> mensajes de advertencia
+    - messages.ERROR --> Mensajes de ERROR

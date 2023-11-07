@@ -140,7 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 try:
     # Importar la configuración de desarrollo cuando el archivo settings_dev esté disponible
-    from settings_dev import *
+    from .settings_dev import *
 except ModuleNotFoundError:
     # Si no está disponible, es porque se está corriendo en producción
     pass

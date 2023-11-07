@@ -1,5 +1,7 @@
 from django import forms
-from .models import Curso
+from .models import Curso, Comentario, Calificacion
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class FormularioCurso(forms.ModelForm):
@@ -35,3 +37,32 @@ class FormularioPelicula(forms.Form):
         required=False
     )
 
+
+class RegistrarUsuario(UserCreationForm):
+    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    nombre = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Ingrese su nombre'}))
+    apellido = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Ingrese su apellido'}))
+
+    class Meta:
+        model: User
+        fields = ('username', 'nombre', 'apellido', 'email', 'password1', 'password2')
+
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['contenido']
+
+
+class CalificacionForm(forms.ModelForm):
+    class Meta:
+        model = Calificacion
+        fields = ['puntaje']
+        labels = {'puntaje': 'Puntaje (Entre 0 y 5)'}
+
+
+    def clean_puntaje(self):
+        puntaje = self.cleaned_data.get('puntaje')
+        if puntaje < 0 or puntaje > 5:
+            raise forms.ValidationError("El puntaje debe estar entre 0 y 5")
+        return puntaje

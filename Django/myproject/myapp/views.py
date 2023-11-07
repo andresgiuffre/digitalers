@@ -1,7 +1,10 @@
 from django.http import HttpResponse, JsonResponse, Http404, HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from django.urls import reverse
-from django.shortcuts import render
-from .models import Curso
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Curso, Comentario, Calificacion
+from .forms import RegistrarUsuario, ComentarioForm, CalificacionForm
 from . import forms
 import sqlite3
 
@@ -20,17 +23,39 @@ def acerca_de(request):
 
 
 def cursos(request):
-    cursos = Curso.objects.all()
-    ctx = {"cursos": cursos}
-    return render(request, "myapp/cursos.html", ctx)
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Se ha autenticado con éxito!")
+            return redirect('cursos')
+        else:
+            messages.error(request, "Ha habido un error de autenticación. Por favor intente nuevamente.")
+            return redirect('cursos')
+    else:
+        cursos = Curso.objects.all()
+        ctx = {"cursos": cursos}
+        return render(request, "myapp/cursos.html", ctx)
 
 
-def curso(request, nombre_curso):
+def curso(request, pk):
     try:
-        curso = Curso.objects.get(nombre=nombre_curso)
+        curso = Curso.objects.get(id=pk)
+        comentarios = Comentario.objects.filter(curso=curso)
+        calificaciones = Calificacion.objects.filter(curso=curso)
+        comentario_form = ComentarioForm()
+        calificacion_form = CalificacionForm()
     except Curso.DoesNotExist:
         raise Http404    
-    ctx = {"curso": curso}
+    ctx = {
+        "curso": curso,
+        "comentarios": comentarios,
+        "calificaciones": calificaciones,
+        "comentario_form": comentario_form,
+        "calificacion_form": calificacion_form
+        }
     return render(request, "myapp/curso.html", ctx)
 
 
@@ -66,6 +91,7 @@ def actualizar_curso(request, pk):
 def eliminar_curso(request, pk):
     eliminar_curso = Curso.objects.get(id=pk)
     eliminar_curso.delete()
+    messages.success(request, "El curso fue eliminado con éxito!")
     return HttpResponseRedirect(reverse("cursos"))
 
 
@@ -109,3 +135,52 @@ def tabla_peliculas(request):
     ctx = {"peliculas": peliculas}
     return render(request, "myapp/tabla_peliculas.html", ctx)
         
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, "Ha salido del sistema satisfactoriamente!")
+    return redirect('cursos')
+
+
+def registrar_usuario(request):
+    if request.method == 'POST':
+        form = RegistrarUsuario(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, f"La cuenta {user} se ha registrado exitosamente!")
+            return redirect('cursos')
+    else:
+        form = RegistrarUsuario()
+        return render(request, 'myapp/registrar.html', {'form': form})
+
+    return render(request, 'myapp/registrar.html', {'form': form})
+
+
+def agregar_comentario(request, pk):
+    curso = get_object_or_404(Curso, id=pk)
+    if request.method == 'POST':
+        comentario_form = ComentarioForm(request.POST)
+        if comentario_form.is_valid():
+            comentario = comentario_form.save(commit=False)
+            comentario.curso = curso
+            comentario.usuario = request.user
+            comentario.save()
+    return redirect('curso', pk=pk)
+
+
+def agregar_calificacion(request, pk):
+    curso = get_object_or_404(Curso, id=pk)
+    if request.method == 'POST':
+        calificacion_form = CalificacionForm(request.POST)
+        if calificacion_form.is_valid():
+            calificacion = calificacion_form.save(commit=False)
+            calificacion.curso = curso
+            calificacion.usuario = request.user
+            calificacion.save()
+        else:
+            messages.warning(request, "La calificación no es válida. Debe ser entre 0 y 5 puntos")
+    return redirect('curso', pk=pk)

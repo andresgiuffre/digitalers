@@ -1,3 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+nav span:last-child {
+    margin-left: auto;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container-noflex {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .tabla-cursos {
     border: 2px solid;
     background-color: lightpink;

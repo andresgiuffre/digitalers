@@ -6,27 +6,48 @@ Lista de Cursos
 {% endblock %}
 
 {% block content %}
-<table class="tabla-cursos">
-    <thead>
+
+{% if user.is_authenticated %}
+
+    <table class="tabla-cursos">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cursos</th>
+                <th>Inscripciones</th>
+                <th>Turno</th>
+            </tr>
+        </thead>
+
+        {% for curso in cursos %}
         <tr>
-            <th>ID</th>
-            <th>Cursos</th>
-            <th>Inscripciones</th>
-            <th>Turno</th>
+            <td><a href="{% url 'curso' curso.id %}">{{ curso.id }}</a></td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.inscripciones }}</td>
+            <td>{{ curso.turno }}</td>
         </tr>
-    </thead>
+        {% endfor %}
+    </table>
 
-    {% for curso in cursos %}
-    <tr>
-        <td><a href="{% url 'curso' curso.nombre %}">{{ curso.id }}</a></td>
-        <td>{{ curso.nombre }}</td>
-        <td>{{ curso.inscripciones }}</td>
-        <td>{{ curso.turno }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <br>
+    <a href='{% url "myindex" %}'><button>Ir al inicio</button></a>
+    <a href='{% url "nuevo_curso" %}'><button>Cargar nuevo curso</button></a>
+    <a href="{% url 'logout' %}"><button>Logoff</button></a>
 
-<br>
-<a href='{% url "myindex" %}'><button>Ir al inicio</button></a>
-<a href='{% url "nuevo_curso" %}'><button>Cargar nuevo curso</button></a>
+{% else %}
+
+    <h1>Login</h1>
+    <br>
+
+    <form method="POST" action="{% url 'cursos' %}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Usuario" required>
+        <br>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <p><button type="submit">Ingresar</button></p>
+    </form>
+    <a href="{% url 'registrar' %}"><button>Registrar Usuario</button></a>
+
+{% endif %}
+
 {% endblock %}
