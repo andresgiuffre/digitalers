@@ -42,9 +42,8 @@ class RegistrarUsuario(UserCreationForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
     nombre = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Ingrese su nombre'}))
     apellido = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Ingrese su apellido'}))
-
     class Meta:
-        model: User
+        model = User
         fields = ('username', 'nombre', 'apellido', 'email', 'password1', 'password2')
 
 
