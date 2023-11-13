@@ -163,3 +163,45 @@ Misma consulta pero mostrar únicamente la inicial del nombre del autor y su ape
 SELECT UPPER(CONCAT(apellido, ', ', LEFT(nombre, 1), '.')) as autor, provincia 
 from autores ORDER BY autor;
 
+'''
+Generar una columna con el nombre INGRESO en la que se muestren todos los empleados y el año
+en el que ingresaron a trabajar a la empresa. El apellido y nombre de cada empleado se
+mostrarán separados con una coma y un espacio en una columna con el nombre EMPLEADO.
+Ordenar de mayor a menor segun los años de ingreso de cada empleado.
+'''
+
+SELECT CONCAT(APELLIDO, ', ', NOMBRE) AS EMPLEADO, 
+YEAR(FECHA_INGRESO) AS INGRESO FROM EMPLEADOS ORDER BY INGRESO DESC;
+
+'''
+Modificar la consulta anterior para agregar una columna con el nombre ANTIGUEDAD. Debe
+calcular la cantidad de años de antigüedad de cada empleado dentro de la empresa al día de
+hoy
+'''
+
+SELECT CONCAT(APELLIDO, ', ', NOMBRE) AS EMPLEADO, 
+YEAR(FECHA_INGRESO) AS INGRESO, TIMESTAMPDIFF(YEAR, FECHA_INGRESO, CURDATE()) AS ANTIGUEDAD 
+FROM EMPLEADOS ORDER BY INGRESO DESC;
+
+'''
+Generar una consulta para obtener el precio mas bajo de la tabla LIBROS. El resultado se debe
+mostrar en una columna con el nombre MENOR PRECIO
+'''
+
+SELECT MIN(precio) as 'Menor Precio' FROM libros;
+
+'''
+Misma consulta pero que agregue el precio más alto de la tabla. La columna se debe llamar
+Mayor Precio
+'''
+
+SELECT MIN(precio) as 'Menor Precio', MAX(precio) as 'Mayor Precio' FROM libros;
+
+'''
+Calcular el precio más bajo, más alto y el precio promedio de los libros pertenecientes a 
+cada categoría
+'''
+
+SELECT CATEGORIA, MIN(precio) as 'Menor Precio', MAX(precio) as 'Mayor Precio', ROUND(AVG(precio), 2) AS 'Precio Promedio' 
+FROM libros;
+
