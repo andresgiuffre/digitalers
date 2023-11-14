@@ -97,3 +97,63 @@ WHERE L.EQUIPO <> V.EQUIPO
 ORDER BY L.EQUIPO;
 
 
+-- Inner Join
+-- Combina 2 o más tablas basándose en un campo en común. La condición de unión
+-- se marca con la cláusula ON
+
+SELECT * FROM clientes
+INNER JOIN pedidos
+ON clientes.COD_CLIENTE = pedidos.CODIGO_CLIENTE
+ORDER BY COD_CLIENTE;
+
+-- Left Join
+-- Devuelve los registros de la tabla de la izquierda y los que coinciden con los de la derecha
+
+SELECT * FROM clientes
+INNER JOIN pedidos
+ON clientes.COD_CLIENTE = pedidos.CODIGO_CLIENTE
+ORDER BY COD_CLIENTE;
+
+-- Si queremos ver solo la parte izquierda sin la parte central (o sea, solo clientes que NO
+-- hayan hecho pedidos)
+
+SELECT * FROM clientes
+LEFT JOIN pedidos
+ON clientes.COD_CLIENTE = pedidos.CODIGO_CLIENTE
+WHERE NUMERO_PEDIDO IS NULL
+ORDER BY COD_CLIENTE;
+
+
+-- Right Join
+-- Devuelve los registros de la tabla de la derecha y los que coinciden con los de la izquierda
+
+SELECT * FROM clientes
+RIGHT JOIN pedidos
+ON clientes.COD_CLIENTE = pedidos.CODIGO_CLIENTE
+WHERE COD_CLIENTE IS NULL
+ORDER BY COD_CLIENTE;
+
+-----------------------------------------
+-- FOREIGN KEY
+-- Con ON DELETE y ON UPDATE declaramos que lo que ocurra con los elementos de la tabla padre (Articulos)
+-- (updates o deletes) afectan también a los relacionados de la tabla hija (Facturas)
+
+CREATE TABLE Facturas(Letra char not null, Numero int, id_articulo int UNSIGNED not null,
+PRIMARY KEY (Letra, Numero));
+
+CREATE TABLE Articulos(id_articulo int unsigned not null auto_increment, Nombre varchar(30) not null,
+PRIMARY KEY (id_articulo));
+
+ALTER TABLE Facturas ADD FOREIGN KEY(id_articulo) REFERENCES
+Articulos(id_articulo) 
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+---------------------------------------
+-- Superllave
+-- Es la suma de uno o más campos que permiten identificar registros de manera única
+-- Ej: en una tabla de Estudiantes, si tenemos ID, nombre, apellido, email, combinando el ID
+-- y el email ya tenemos una manera única de identificar al estudiante.
+
+
+
